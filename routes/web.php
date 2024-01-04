@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\FileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,6 +28,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::get('/files', [FileController::class, 'index'])->name('files.index');
+    Route::post('/files/upload', [FileController::class, 'upload'])->name('files.upload');
+    Route::get('/files/download/{fileId}', [FileController::class, 'download'])->name('files.download');
+    Route::delete('/files/delete/{fileId}', [FileController::class, 'delete'])->name('files.delete');
 });
 
 Route::middleware(['auth', 'isAdmin'])->group(function () {
