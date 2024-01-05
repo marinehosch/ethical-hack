@@ -12,6 +12,8 @@ Pour lancer le projet avec GitHub Codespaces :
 
 GitHub Codespaces configurera automatiquement l'environnement et lancera le projet.
 
+Si vous rencontrez des problèmes avec la base de donnée MySQL qui n'est pas accessible, il faut faire un rebuild et si le problème persiste, utilisez docker
+
 ## 2. Lancement avec Docker en Local
 
 Pour lancer le projet en local avec Docker :
