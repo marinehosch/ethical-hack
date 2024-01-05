@@ -6,7 +6,6 @@ Ce projet Laravel peut être lancé de deux manières différentes : via GitHub 
 
 Pour lancer le projet avec GitHub Codespaces :
 
-- Accédez à [GitHub](https://github.com/) et ouvrez le repository de votre projet.
 - Cliquez sur le bouton "Code" en haut à droite de la page du repository.
 - Sélectionnez "Open with Codespaces".
 - Cliquez sur "New codespace" pour créer un nouvel espace.
