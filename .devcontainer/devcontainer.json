@@ -10,12 +10,17 @@
 		"vscode": {
 			"extensions": [
 				"onecentlin.laravel-extension-pack",
-                "Vue.volar",
-                "nhedger.inertia",
-                "dbaeumer.vscode-eslint",
-                "esbenp.prettier-vscode",
-                "bradlc.vscode-tailwindcss",
-                "cpylua.language-postcss"
+				"Vue.volar",
+				"nhedger.inertia",
+				"dbaeumer.vscode-eslint",
+				"esbenp.prettier-vscode",
+				"bradlc.vscode-tailwindcss",
+				"cpylua.language-postcss",
+				"GitHub.copilot-chat",
+				"ms-azuretools.vscode-docker",
+				"VisualStudioExptTeam.vscodeintellicode",
+				"bmewburn.vscode-intelephense-client",
+				"xdebug.php-debug"
 			],
 			"settings": {
 				"editor.formatOnSave": true,
@@ -28,7 +33,31 @@
 		}
 	},
 	"remoteUser": "sail",
-	"postCreateCommand": "chown -R 1000:1000 /var/www/html 2>/dev/null || true && cp .env.example .env && composer install && php artisan key:generate && php artisan storage:link --force && php artisan migrate --force --seed && npm install"
-	// "runServices": [],
+	"postCreateCommand": "chown -R 1000:1000 /var/www/html 2>/dev/null || true && cp .env.example .env && composer install && php artisan key:generate && php artisan storage:link --force && php artisan migrate --force --seed && npm install",
+	"forwardPorts": [
+        80,
+        8025,
+        8080,
+        5173,
+        8900
+    ],
+    "portsAttributes": {
+        "80": {
+            "label": "Application",
+            "onAutoForward": "notify"
+        },
+        "8025": {
+            "label": "Mailpit"
+        },
+        "8080": {
+            "label": "phpMyAdmin"
+        },
+        "5173": {
+            "label": "Vite (hmr)"
+        },
+        "8900": {
+            "label": "Minio"
+        }
+    }// "runServices": [],
 	// "shutdownAction": "none",
 }
