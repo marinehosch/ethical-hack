@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
@@ -34,8 +35,20 @@ class AdminController extends Controller
             Log::error('L\'utilisateur ' . auth()->user()->id . ' a tenté de mettre à jour le rôle de l\'utilisateur ' . $user->id . ' sans avoir les droits.');
         }
 
-
     }
 
+    //fonction pour recherche un utilisateur par son mail ou son nom
+    public function search(Request $request)
+     {
+        $search = $request->input('search');
+
+        // Récupérer les utilisateurs en fonction de la recherche
+        $users = User::when($search, function ($query) use ($search) {
+            $query->where(DB::raw('name'), 'like', '%' . $search . '%')
+                  ->orWhere(DB::raw('email'), 'like', '%' . $search . '%');
+        })->get();
+
+        return view('admin_dashboard', ['users' => $users]);
+    }
 
 }
